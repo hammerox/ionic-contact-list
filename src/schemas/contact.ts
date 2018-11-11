@@ -1,7 +1,6 @@
 export class Contact {
-    icon: string;
     name: string;
-    rank: string;
+    occupation: string;
     company: string;
     phone: string;
     email: string;

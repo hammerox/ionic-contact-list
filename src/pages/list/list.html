@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Contatos</ion-title>
+    <ion-title>Lista de Contatos</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="addContact()">
         <ion-icon name="add"></ion-icon>
@@ -16,7 +16,6 @@
   <ion-list>
     <button ion-item *ngFor="let item of items; index as i" 
     (click)="itemTapped($event, item, i)">
-      <ion-icon name="{{item.icon}}" item-left></ion-icon>
       {{item.name}}
       <div class="item-note" item-right>
         {{item.phone}}

@@ -8,8 +8,6 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { Storage } from '@ionic/storage';
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -24,8 +22,7 @@ export class MyApp {
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen,
-    public storage: Storage
+    public splashScreen: SplashScreen
   ) {
     this.initializeApp();
 
@@ -42,12 +39,6 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-    });
-
-    this.storage.set('test', 'TESTE').then((val) => {
-      this.storage.get('test').then((val) => {
-        console.log(val);
-      })
     });
   }
 

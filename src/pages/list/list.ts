@@ -16,23 +16,8 @@ export class ListPage {
   icons: string[];
   items: Array<Contact>;
   storageKey: string = 'contact_list';
-  storage: Storage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public strg: Storage, public platform: Platform) {
-    this.storage = strg;
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    // MOCK
-    /* this.items = [];
-    for(let i = 1; i < 11; i++) {
-      let item = new Contact
-      item.name = 'Item ' + i
-      item.phone = 'This is item #' + i,
-      item.icon = this.icons[Math.floor(Math.random() * this.icons.length)]
-      this.items.push(item);
-    } */
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public platform: Platform) {
     this.refreshList()
   }
 
@@ -55,7 +40,45 @@ export class ListPage {
   refreshList() {
     this.storage.get(this.storageKey).then((val) => {
       this.items = val
+
+      // Mock if empty
+      if (val == undefined || this.items.length === 0) {
+        this.items = []
+        this.mockList()
+      }
+
       console.log(val);
     })
+  }
+
+  mockList() {
+    this.items.push({
+      name: 'Davi Sousa',
+      occupation: 'Material recording',
+      company: 'JasmineSola',
+      phone: '(42) 7445-8167',
+      email: 'DaviSousaFerreira@rhyta.com',
+      birthdate: '1940-03-24'
+    });
+
+    this.items.push({
+      name: 'Isabela Melo Ribeiro',
+      occupation: 'Recreational vehicle service technician',
+      company: 'Asian Fusion',
+      phone: '(47) 2299-6712',
+      email: 'IsabelaMeloRibeiro@armyspy.com',
+      birthdate: '1963-06-11'
+    });
+
+    this.items.push({
+      name: 'Vinicius Ferreira',
+      occupation: 'Press operator',
+      company: 'Krauses Sofa Factory',
+      phone: '(27) 2981-7775',
+      email: 'ViniciusOliveiraFerreira@dayrep.com',
+      birthdate: '1982-03-30'
+    });
+
+    this.storage.set(this.storageKey, this.items)
   }
 }
