@@ -3,13 +3,19 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>My First List</ion-title>
+    <ion-title>Contatos</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addContact()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let item of items; index as i" (click)="itemTapped($event, item, i)">
+    <button ion-item *ngFor="let item of items; index as i" 
+    (click)="itemTapped($event, item, i)">
       <ion-icon name="{{item.icon}}" item-left></ion-icon>
       {{item.name}}
       <div class="item-note" item-right>
